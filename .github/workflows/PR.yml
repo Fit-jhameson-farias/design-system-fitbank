@@ -1,0 +1,21 @@
+name: Create Pull Request
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3.5.1
+        with:
+          token: ${{ secrets.API_TOKEN_GITHUB }}
+          commit-message: "Add changes"
+          title: "Pull Request title"
+          body: "Pull Request description"
+          branch: "feature-branch"
+          base: "main"
+          labels: "label1,label2"
+          draft: false
+          draft-draft: true
+          draft-wip: false
+          target: "Jhameson:gh-action-v1:main"
